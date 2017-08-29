@@ -11,12 +11,16 @@ namespace ComicBookGallery.Controllers
         // GET: ComicBooks
         public ActionResult Index()
         {
-            return View();
+            return Content("First page");
         }
 
-        public string Detail()
+        public ActionResult Detail()
         {
-            return "Hello world";
+            if (DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
+            {
+                return Redirect("/ComicBooks/index");
+            }
+            return Content("Hello");
         }
     }
 }
